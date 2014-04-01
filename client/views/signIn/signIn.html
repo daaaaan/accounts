@@ -1,0 +1,62 @@
+<template name='entrySignIn'>
+     
+
+
+    <div class="login-wrapper">
+              {{#if logo}}
+        <a href="index.html">
+            <img class="logo" src="{{logo}}" alt="logo" />
+        </a>
+              {{/if}}
+
+
+        
+           <div class="box">
+            <div class="content-wrap">
+        
+        
+            {{#if otherLoginServices}}
+        <div class="entry-social">
+          {{#each loginServices}}
+            {{> entrySocial}}
+          {{/each}}
+          {{#if passwordLoginService}}
+          <div class="email-option">
+<!--
+            <strong class="line-thru or-sign-in">{{i18n "OR"}}</strong>
+-->
+          </div>
+          {{/if}}
+        </div>
+        {{/if}}
+        {{> entryError}}
+        {{#unless otherLoginServices}}
+          <div class="email-option">
+            <h6>{{i18n "signIn"}}</h6>
+          </div>
+        {{/unless}}
+        {{#if passwordLoginService}}
+          <form class="entry-form" id='signIn'>
+            <div class="form-group">
+              <input autofocus name="email" type="{{emailInputType}}" class="form-control" value='{{email}}' placeholder="{{emailPlaceholder}}">
+            </div>
+            <div class="form-group">
+              <input name="password" type="password" class="form-control" value='{{password}}' placeholder="{{i18n 'password'}}">
+            </div>
+            <p><a href="/forgot-password">{{i18n "forgotPassword"}}</a></p>
+            <button type="submit" class="submit btn btn-block btn-default">{{i18n "signIn"}}</button>
+          </form>
+        {{/if}}
+         
+      </div>
+             
+        </div>
+          <div class="no-account">
+            <p>{{i18n "dontHaveAnAccount"}}</p>
+            <a href="/sign-up">{{i18n "signUp"}}</a>
+    </div>
+  </div>
+      
+  
+      
+</template>
